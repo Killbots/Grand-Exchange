@@ -1,4 +1,4 @@
-# GrandExchange
+# Grand-Exchange
 
 GrandExchange is a Paper plugin for player-to-player fixed-price listings with
 inventory menus, baseline pricing, and shared MariaDB storage for multi-server
