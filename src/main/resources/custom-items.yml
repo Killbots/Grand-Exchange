@@ -1,0 +1,2 @@
+# Custom item catalog. Add items in game with /exchange custom add <key> <baseline-price> while holding the item.
+items: {}

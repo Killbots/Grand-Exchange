@@ -1,0 +1,32 @@
+GrandExchange
+Copyright 2026 GrandExchange contributors
+
+The GrandExchange source code is licensed under the Apache License, Version 2.0.
+The complete license text is in LICENSE and, in the plugin JAR, in
+META-INF/LICENSE-GrandExchange.txt.
+
+Bundled third-party components
+------------------------------
+
+HikariCP 6.2.1
+Copyright (c) 2015 Brett Wooldridge
+Licensed under the Apache License, Version 2.0. Package names are relocated
+from com.zaxxer.hikari to dev.grandexchange.lib.hikari when building the plugin.
+
+MariaDB Connector/J 3.5.3
+Licensed under the GNU Lesser General Public License, version 2.1 or (at your
+option) any later version. The driver is included without package relocation.
+Its license text is in META-INF/licenses/LGPL-2.1.txt. The corresponding source
+files are included under META-INF/source-code/org/mariadb/.
+Upstream: https://github.com/mariadb-corporation/mariadb-connector-j
+
+H2 Database Engine 2.3.232
+Copyright (c) 2004-2024 H2 Group
+H2 is dual-licensed under the Mozilla Public License 2.0 and Eclipse Public
+License 1.0. This distribution uses the Mozilla Public License 2.0. Its license
+text is in META-INF/licenses/MPL-2.0.txt. The corresponding source files are
+included under META-INF/source-code/org/h2/.
+Upstream: https://github.com/h2database/h2database
+
+Paper API and VaultAPI are compile-time dependencies and are not bundled in the
+plugin JAR.

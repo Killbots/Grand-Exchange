@@ -1,0 +1,37 @@
+name: GrandExchange
+version: '${version}'
+main: dev.grandexchange.ExchangePlugin
+api-version: '1.21'
+authors: [GrandExchange]
+description: Configurable cross-server player marketplace for Paper.
+depend: [Vault]
+commands:
+  exchange:
+    description: Open the Grand Exchange.
+    aliases: [ge, grandexchange]
+    usage: /exchange
+permissions:
+  grandexchange.use:
+    description: Use the Grand Exchange.
+    default: true
+  grandexchange.admin:
+    description: Administer the Grand Exchange.
+    default: op
+  grandexchange.slots.10:
+    description: Unlock 10 active Grand Exchange sell slots.
+    default: false
+  grandexchange.slots.12:
+    description: Unlock 12 active Grand Exchange sell slots.
+    default: false
+  grandexchange.slots.16:
+    description: Unlock 16 active Grand Exchange sell slots.
+    default: false
+  grandexchange.slots.20:
+    description: Unlock 20 active Grand Exchange sell slots.
+    default: false
+  grandexchange.slots.32:
+    description: Unlock 32 active Grand Exchange sell slots.
+    default: false
+  grandexchange.slots.40:
+    description: Unlock 40 active Grand Exchange sell slots.
+    default: false

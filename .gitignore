@@ -1,0 +1,12 @@
+.gradle/
+build/
+out/
+.idea/
+*.iml
+*.log
+*.mv.db
+*.trace.db
+*.lock.db
+*.h2.db
+*.bak
+config.local.yml

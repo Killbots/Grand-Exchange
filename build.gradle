@@ -1,0 +1,70 @@
+plugins {
+    id 'java'
+    id 'com.gradleup.shadow' version '8.3.6'
+}
+
+group = 'dev.grandexchange'
+version = '0.1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://repo.papermc.io/repository/maven-public/' }
+    maven { url = 'https://jitpack.io' }
+}
+
+configurations {
+    thirdPartySources
+}
+
+dependencies {
+    compileOnly 'io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT'
+    compileOnly 'com.github.MilkBowl:VaultAPI:1.7.1'
+    implementation 'org.mariadb.jdbc:mariadb-java-client:3.5.3'
+    implementation 'com.h2database:h2:2.3.232'
+    implementation 'com.zaxxer:HikariCP:6.2.1'
+
+    // Include corresponding source archives for bundled copyleft libraries.
+    thirdPartySources 'org.mariadb.jdbc:mariadb-java-client:3.5.3:sources'
+    thirdPartySources 'com.h2database:h2:2.3.232:sources'
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 21
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('plugin.yml') {
+        expand 'version': project.version
+    }
+}
+
+shadowJar {
+    archiveBaseName = 'GrandExchange'
+    archiveClassifier = ''
+    mergeServiceFiles()
+    relocate 'com.zaxxer.hikari', 'dev.grandexchange.lib.hikari'
+    from('LICENSE') {
+        into 'META-INF'
+        rename { 'LICENSE-GrandExchange.txt' }
+    }
+    from('NOTICE') {
+        into 'META-INF'
+    }
+    from('licenses') {
+        into 'META-INF/licenses'
+    }
+    from(project.configurations.thirdPartySources.collect { zipTree(it) }) {
+        include 'org/**/*.java'
+        into 'META-INF/source-code'
+    }
+}
+
+tasks.build {
+    dependsOn tasks.shadowJar
+}

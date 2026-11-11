@@ -1,0 +1,31 @@
+# Identify this backend in offer and trade audit records. Use a unique ID per backend.
+server-id: unknown
+
+menu:
+  # Legacy Bukkit color codes are supported; ModernMC presets use aqua and dark blue.
+  name: '&bGrand &1Exchange'
+
+# H2 is local to one server. Use MariaDB for a shared cross-server market.
+storage:
+  # Use h2 for local storage or mariadb for shared network storage.
+  type: h2
+  file: market
+  host: 127.0.0.1
+  port: 3306
+  database: grand_exchange
+  username: grandexchange
+  password: ''
+  pool-size: 4
+
+market:
+  # Base active sell slots; permission tiers below raise this up to the hard cap.
+  default-sell-slots: 8
+  max-open-offers-per-player: 40
+  sell-slot-tiers: [10, 12, 16, 20, 32, 40]
+  # Indicative market prices stay within this range around their baseline.
+  minimum-price-multiplier: 0.50
+  maximum-price-multiplier: 2.00
+  # Completed trades retained for market price calculations.
+  history-days: 30
+  # Item matching uses material plus serialized item metadata.
+  match-item-metadata: true
